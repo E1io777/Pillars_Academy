@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>倍乐补习中心 · Pillars Academy</title>
+<link rel="icon" type="image/x-icon" href="C:\Users\ACER\Downloads\website\images\tree logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+    :root {
+      --brand1: #f97316; /* 橙色 */
+      --brand2: #ea580c; /* 深橙 */
+      --peach: #FFDAC1; /* Soft Peach */
+      --light-peach: #FFF7ED;
+      --dark-gray: #1f2937;
+      --text-color: #374151;
+      --light-bg: #f9fafb;
+      --card-bg: #ffffff;
+      --border-color: #e5e7eb;
+    }
+    html {
+      scroll-padding-top: 100px; 
+    }
+    body { font-family: 'Poppins', 'Noto Sans SC', sans-serif; margin: 0; background: var(--light-bg); color: var(--text-color); line-height: 1.6; }
+    header { background: var(--card-bg); padding: 1rem 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; }
+    .header-logo { height: 140px; }
+    nav a { margin-left: 1.5rem; text-decoration: none; color: var(--text-color); font-weight: 500; transition: color 0.3s ease; }
+    nav a:hover { color: var(--brand2); }
+    .hero { padding: 5rem 2rem; text-align: center; background: var(--light-peach); }
+    .hero h1 { font-size: 3rem; font-weight: 800; color: var(--brand2); margin: 0; }
+    .hero p { font-size: 1.5rem; margin-top: 0.5rem; color: var(--brand1); font-weight: 600; }
+    section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+    h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem; text-align: center; color: var(--dark-gray); }
+    .grid { display: grid; gap: 2rem; }
+    .md\:grid-cols-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .card { background: var(--card-bg); border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 2rem; transition: transform 0.3s ease; }
+    .card:hover { transform: translateY(-5px); }
+    .card h3 { color: var(--brand2); font-size: 1.5rem; margin-top: 0; }
+    .badge { display: inline-block; background: var(--brand1); color: white; font-size: 0.8rem; padding: 0.4rem 1rem; border-radius: 9999px; font-weight: 600; }
+    footer { background: var(--dark-gray); color: white; text-align: center; padding: 3rem; margin-top: 4rem; }
+    .icon-list { list-style: none; padding: 0; }
+    .icon-list li { display: flex; align-items: flex-start; margin-bottom: 1rem; }
+    .icon-list li i { color: var(--brand1); margin-right: 1rem; font-size: 1.2rem; margin-top: 0.2rem; }
+    .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .image-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .image-grid img:hover:not(.expanded) {
+      transform: scale(1.03);
+    }
+
+    /* FAQ section */
+    .faq-item { margin-bottom: 1.5rem; }
+    .faq-item h3 { font-weight: 600; color: var(--brand2); }
+    nav.toc { background: var(--light-peach); border: 1px solid #fed7aa; border-radius: 1rem; padding: 1.5rem; margin-bottom: 2rem; }
+    nav.toc a { display: inline-block; margin: .5rem .75rem; padding: .5rem 1rem; color: var(--brand2); text-decoration: none; border-radius: .5rem; font-weight: 600; background: var(--card-bg); border: 1px solid #fcd34d; transition: background-color 0.3s ease; }
+    nav.toc a:hover { background: #fde68a; }
+    .faq-cat { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 1rem; margin: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .faq-cat > summary { cursor: pointer; padding: 1.5rem 2rem; font-weight: 700; color: var(--brand2); list-style: none; }
+    .faq-cat[open] > summary { color: var(--dark-gray); border-bottom: 1px solid var(--border-color); }
+    .faq-cat summary::-webkit-details-marker { display: none; }
+    .faq-cat summary::after { content: '＋'; float: right; font-size: 1.5rem; transition: transform 0.3s ease; }
+    .faq-cat[open] > summary::after { content: '－'; transform: rotate(180deg); }
+    .qa-list { padding: .5rem 2rem 1.5rem; }
+    .qa-list details { border: 1px solid var(--border-color); border-radius: 0.75rem; margin: 0.8rem 0; }
+    .qa-list > details > summary { font-weight: 600; color: var(--brand2); padding: 1rem 1.5rem; cursor: pointer; list-style: none; }
+    .qa-list > details[open] > summary { color: var(--dark-gray); border-bottom: 1px solid var(--border-color); }
+    .qa-list summary::-webkit-details-marker { display: none; }
+    .qa-list summary::after { content: '＋'; float: right; font-size: 1.2rem; }
+    .qa-list details[open] > summary::after { content: '－'; }
+    .qa-list details > div { padding: 1rem 1.5rem 1.5rem; color: var(--text-color); }
+    
+    /* Image zoom effect */
+    .zoom-img {
+      max-width: 100%;
+      height: auto;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .zoom-img.expanded {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      /* Remove max-width and max-height to show the original size */
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      /* Ensure image doesn't go off-screen, just in case */
+      width: auto;
+      height: auto;
+      max-width: 95vw;
+      max-height: 95vh;
+    }
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 9998;
+      display: none;
+    }
+    .overlay.active { display: block; }
+
+    @media (max-width: 768px) {
+        header { flex-direction: column; align-items: center; }
+        nav { margin-top: 1rem; }
+        nav a { margin: 0.5rem; }
+        .hero h1 { font-size: 2.2rem; }
+        .hero p { font-size: 1.2rem; }
+        section { padding: 2rem 1rem; }
+        h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="C:\Users\ACER\Downloads\website\images\logo (main).jpg" alt="Pillars Academy Logo" class="header-logo">
+  <nav>
+    <a href="#about">中心简介</a>
+    <a href="#vision">愿景使命</a>
+    <a href="#advantages">我们的优势</a>
+    <a href="#courses">课程与科目</a>
+    <a href="#assignments">自编作业</a>
+    <a href="#special">特别班</a>
+    <a href="#timetable">课程时间表</a>
+    <a href="#enroll">报名流程</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">联系我们</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>倍乐补习中心 · Pillars Academy</h1>
+  <p>勤学 · 乐学</p>
+</section>
+
+<section id="about">
+  <h2>中心简介</h2>
+  <p style="text-align:center;">倍乐补习中心专注于为学生提供高质量的课程与学习支持，由专业教师团队带领，熟悉吉隆坡名校教学体系，帮助学生在轻松与高效的环境中成长。</p>
+</section>
+
+<section id="vision">
+  <h2>愿景与使命</h2>
+  <div class="grid md:grid-cols-2">
+    <div class="card">
+      <h3><i class="fas fa-eye"></i> 愿景 Vision</h3>
+      <p>以系统化教学和优质资源，帮助学生奠定坚实学业基础，培养终身受用的学习能力与积极态度。</p>
+    </div>
+    <div class="card">
+      <h3><i class="fas fa-bullseye"></i> 使命 Mission</h3>
+      <ul class="icon-list">
+        <li><i class="fas fa-check-circle"></i> 提供高质量、系统化的课程，紧贴学校教学大纲与考试需求。</li>
+        <li><i class="fas fa-check-circle"></i> 汇聚专业、经验丰富的教师团队，确保教学专业与高效。</li>
+        <li><i class="fas fa-check-circle"></i> 注重学习兴趣与自信心培养，让学生在“勤学乐学”的氛围中稳步提升。</li>
+        <li><i class="fas fa-check-circle"></i> 搭建家校沟通桥梁，与家长携手，支持学生长期学业与品格发展。</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" style="margin-top:2rem; text-align:center;">
+    <span class="badge">Slogan</span>
+    <p style="margin-top:1rem; font-weight:600; color:var(--brand2);">勤学乐学 · Pillars Academy 倍乐补习中心</p>
+  </div>
+</section>
+
+<section id="advantages">
+  <h2>我们的优势</h2>
+  <div class="grid md:grid-cols-2">
+    <div class="card">
+      <h3><i class="fas fa-users-cog"></i> 专业教师团队</h3>
+      <p>由在职全职老师与前名校教师组成，熟悉吉隆坡名校教学系统，确保教学质量和高效性。</p>
+    </div>
+    <div class="card">
+      <h3><i class="fas fa-book-open"></i> 系统化课程</h3>
+      <p>提供紧贴学校教学大纲的课程，并根据坤成考试安排进行调整，为学生提供针对性准备。</p>
+    </div>
+    <div class="card">
+      <h3><i class="fas fa-smile-beam"></i> 勤学乐学氛围</h3>
+      <p>注重培养学生的学习兴趣与自信心，让学生在轻松愉悦的环境中稳步提升，不再为学习感到烦恼。</p>
+    </div>
+    <div class="card">
+      <h3><i class="fas fa-map-marker-alt"></i> 优越地理位置</h3>
+      <p>补习中心位于坤成中学对面，步行仅需5分钟即可到达，为学生和家长提供极大的便利。</p>
+    </div>
+  </div>
+</section>
+
+<section id="courses">
+  <h2>课程与科目</h2>
+  <ul class="grid md:grid-cols-2">
+    <li class="card">
+      <h3><i class="fas fa-language"></i> 语文</h3>
+      <p>华文、国文、中国文学</p>
+    </li>
+    <li class="card">
+      <h3><i class="fas fa-calculator"></i> 数学</h3>
+      <p>数学、高等数学</p>
+    </li>
+    <li class="card">
+      <h3><i class="fas fa-flask"></i> 科学</h3>
+      <p>综合科学、物理、化学、生物</p>
+    </li>
+    <li class="card">
+      <h3><i class="fas fa-chart-line"></i> 其他</h3>
+      <p>会计、地理、Sejarah</p>
+    </li>
+  </ul>
+</section>
+
+<section id="assignments">
+  <h2>自编作业</h2>
+  <p style="text-align:center;">倍乐自研《初中作业 Workbook》系列，为学生提供系统化练习，巩固所学知识。</p>
+  <div class="image-grid">
+    <img src="C:\Users\ACER\Downloads\website\images\E1.jpg" alt="Assignments" class="zoom-img">
+    <img src="C:\Users\ACER\Downloads\website\images\E2.jpg" alt="Assignments" class="zoom-img">
+    <img src="C:\Users\ACER\Downloads\website\images\E3.jpg" alt="Assignments" class="zoom-img">
+    <img src="C:\Users\ACER\Downloads\website\images\E4.jpg" alt="Assignments" class="zoom-img">
+  </div>
+</section>
+
+<section id="special">
+  <h2>2025 特别班</h2>
+  <p style="text-align:center;">我们提供针对特定考试的特别训练班，帮助学生高效备考，包括统考特攻班、独中入学试特攻班和SPM特攻班。</p>
+  <div class="image-grid">
+    <img src="C:\Users\ACER\Downloads\website\images\F1.jpg" alt="Special Classes" class="zoom-img">
+    <img src="C:\Users\ACER\Downloads\website\images\F2.jpg" alt="Special Classes" class="zoom-img">
+    <img src="C:\Users\ACER\Downloads\website\images\F3.jpg" alt="Special Classes" class="zoom-img">
+    <img src="C:\Users\ACER\Downloads\website\images\F4.jpg" alt="Special Classes" class="zoom-img">
+  </div>
+</section>
+
+<section id="timetable">
+  <h2>课程时间表</h2>
+  <p style="text-align:center;">以下为示例，实际以当月更新为准。</p>
+  <div class="image-grid">
+    <img src="C:\Users\ACER\Downloads\website\images\G1_resized.jpg" alt="课程时间表 - 初中" class="zoom-img">
+    <img src="C:\Users\ACER\Downloads\website\images\G2.jpg" alt="课程时间表 - 高中" class="zoom-img">
+    <img src="C:\Users\ACER\Downloads\website\images\G3.jpg" alt="课程时间表 - 初中" class="zoom-img">
+    <img src="C:\Users\ACER\Downloads\website\images\G4.jpg" alt="课程时间表 - 高中" class="zoom-img">
+    <img src="C:\Users\ACER\Downloads\website\images\G5.jpg" alt="课程时间表 - 高中" class="zoom-img">
+  </div>
+</section>
+
+<section id="enroll">
+  <h2>报名流程</h2>
+  <div class="grid md:grid-cols-2">
+    <div class="card">
+      <ul class="icon-list">
+        <li><i class="fas fa-file-alt"></i> 填写报名表或致电/WhatsApp 咨询。</li>
+        <li><i class="fas fa-calendar-check"></i> 确认课程与时段。</li>
+        <li><i class="fas fa-money-check-alt"></i> 缴交报名费与学费。</li>
+        <li><i class="fas fa-users"></i> 加入班级群组。</li>
+        <li><i class="fas fa-graduation-cap"></i> 正式上课。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <img src="C:\Users\ACER\Downloads\website\images\H (1).jpg" alt= "Enrollment Process" style="width: 100%; height: auto; border-radius: 0.75rem;">
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2>常见问题</h2>
+  <div class="cat-acc">
+    <details class="faq-cat" id="cat1"><summary>课程与教学</summary>
+      <div class="qa-list">
+        <details><summary>Q1：倍乐补习中心开设哪些科目？</summary><div>A：华文、英文、马来文、数学、高级数学、科学、生物、化学、物理、会计、中国文学、Sejarah 等。</div></details>
+        <details><summary>Q2：课程时间表是固定的吗？</summary><div>A：有每周固定时间表，但会根据坤中考试安排与学生需求进行调整。</div></details>
+        <details><summary>Q3：你们的老师是什么背景？</summary><div>A：在职全职老师与前名校教师，熟悉吉隆坡坤成教学系统。</div></details>
+        <details><summary>Q4：学生对象？</summary><div>A：以坤中学生为主，同时欢迎报考马来西亚文凭（SPM）的非坤中生。</div></details>
+        <details><summary>Q5：教学语言？</summary><div>A：中英文双语教学，学习单以英文为主，中文为补助。</div></details>
+        <details><summary>Q6：老师会帮忙准备考试吗？</summary><div>A：会，我们会依照坤中考试范围为学生进行针对性准备。</div></details>
+        <details><summary>Q7：补习时长？</summary><div>A：一般每月 6 小时：1.5 小时/堂 × 4 次，部分科目为 2 小时/堂 × 3 次。</div></details>
+        <details><summary>Q8：迟加入可以看回以前的课程吗？</summary><div>A：不提供往期回放。如有需要，可与负责老师沟通。</div></details>
+        <details><summary>Q9：是不是每一课都有录制？</summary><div>A：网课都会录制并提供回放，实体课学生如缺席可看网课录制回放。</div></details>
+        <details><summary>Q10：课程开课与结束时间？</summary><div>A：1–12 月上课。初三课程于 11 月结束；部分会因准备考试而提前上完，12 月最后两周不上课。</div></details>
+      </div>
+    </details>
+    <details class="faq-cat" id="cat2"><summary>报名与费用</summary>
+      <div class="qa-list">
+        <details><summary>Q11：如何报名？</summary><div>A：在网页填写报名表或扫码传单报名。</div></details>
+        <details><summary>Q12：学费如何计算？</summary><div>A：依科目与年级而定，请联系索取收费表。</div></details>
+        <details><summary>Q13：可以中途加入吗？</summary><div>A：可以，中途加入时将按比例计算当月学费。</div></details>
+        <details><summary>Q14：缴费方式？</summary><div>A：支持电子转账或现金。</div></details>
+      </div>
+    </details>
+    <details class="faq-cat" id="cat3"><summary>作业与学习支持</summary>
+      <div class="qa-list">
+        <details><summary>Q15：会提供学习单吗？</summary><div>A：会。实体班提供纸本笔记，网课和录影课程提供电子笔记。</div></details>
+        <details><summary>Q16：家长能收到学习报告吗？</summary><div>A：暂无正式书面报告，但老师会通过家校沟通反馈进度。</div></details>
+      </div>
+    </details>
+    <details class="faq-cat" id="cat4"><summary>特别课程</summary>
+      <div class="qa-list">
+        <details><summary>Q17：有哪些特别班？</summary><div>A：我们提供考前，假期训练课程，针对入学考试的特攻班（6月-9月）。</div></details>
+        <details><summary>Q18：如何报名特别课程？</summary><div>A：每个特别课程宣传单上有独立 QR 码，扫码即可报名；负责人会在两天内联系。</div></details>
+      </div>
+    </details>
+    <details class="faq-cat" id="cat5"><summary>实体课程</summary>
+      <div class="qa-list">
+        <details><summary>Q19：上课地点？</summary><div>A：位于坤成中学对面，步行 5 分钟即可。请于开课前 5 分钟到达。</div></details>
+        <details><summary>Q20：请假与补课？</summary><div>A：提前请假者可安排线上补课或观看录影课程。</div></details>
+        <details><summary>Q21：家长可在中心等候吗？</summary><div>A：可在大厦 lobby 等候；课堂内仅限学生进入。</div></details>
+        <details><summary>Q22：安全性如何？</summary><div>A：大厦有专业保安，三层安检，全覆盖监控。</div></details>
+        <details><summary>Q23：学校假期上课安排？</summary><div>A：改为线上课程，请留意群组通知。</div></details>
+        <details><summary>Q24：班级人数？</summary><div>A：依课室大小，约 7–24 人。</div></details>
+        <details><summary>Q25：如何确认孩子到课？</summary><div>A：老师会点名；若缺席，会在群组通知家长。</div></details>
+      </div>
+    </details>
+    <details class="faq-cat" id="cat6"><summary>线上课程</summary>
+      <div class="qa-list">
+        <details><summary>Q26：使用什么平台？</summary><div>A：Zoom 固定链接。</div></details>
+        <details><summary>Q27：设备与网络要求？</summary><div>A：建议电脑/平板 + 稳定网络 + 耳麦，并保持镜头开启。</div></details>
+        <details><summary>Q28：是否提供录播或讲义？</summary><div>A：提供电子讲义；录播视班级政策开放，通常限时。</div></details>
+        <details><summary>Q29：如何获得答疑？</summary><div>A：可在线上课堂向老师提问，由老师统一讲解。</div></details>
+      </div>
+    </details>
+    <details class="faq-cat" id="cat7"><summary>录影课程</summary>
+      <div class="qa-list">
+        <details><summary>Q30：什么是录影课程？</summary><div>A：网课录制，适合时间不固定或需反复复习的学生。</div></details>
+        <details><summary>Q31：不能当场提问怎么办？</summary><div>A：可直接联系课程老师（录影班专属）。</div></details>
+        <details><summary>Q32：观看有效期？</summary><div>A：录影课程观看期限为 2 周。</div></details>
+      </div>
+    </details>
+    <details class="faq-cat" id="cat8"><summary>作业本相关</summary>
+      <div class="qa-list">
+        <details><summary>Q33：如何购买？</summary><div>A：宣传单扫码即可。</div></details>
+        <details><summary>Q34：编写团队？</summary><div>A：由经验丰富的有教坤中学生经验的教师编写。</div></details>
+        <details><summary>Q35：适合对象？</summary><div>A：坤中生及准备考 SPM 的独中生。</div></details>
+      </div>
+    </details>
+    <details class="faq-cat" id="cat9"><summary>退出事宜</summary>
+      <div class="qa-list">
+        <details><summary>Q36：如何退出？</summary><div>A：填推出表，学术老师会跟您联系和办理。</div></details>
+        <details><summary>Q37：提前多久通知？</summary><div>A：需至少提前一个月。</div></details>
+        <details><summary>Q38：押金如何处理？</summary><div>A：押金抵扣最后一个月学费。</div></details>
+      </div>
+    </details>
+    <details class="faq-cat" id="cat10"><summary>其他常见问题</summary>
+      <div class="qa-list">
+        <details><summary>Q39：上课需要带什么？</summary><div>A：学生需带文具；教材资料由补习中心准备。</div></details>
+        <details><summary>Q40：你们的教学特色？</summary><div>A：强调“勤学乐学”，让学生保持学习兴趣并有效提升成绩。</div></details>
+        <details><summary>Q41：补习群组的对象是谁？</summary><div>A：初中群组：一位家长 + 学生；高中群组：以学生为主。家长可选择不加入。</div></details>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section id="contact">
+    <h2>联系我们</h2>
+    <div class="grid md:grid-cols-2">
+      <div class="card">
+        <h3><i class="fas fa-map-marker-alt"></i> 地址</h3>
+        <p>Menara Sentral Vista, Brickfields, Kuala Lumpur</p>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-phone-alt"></i> 电话</h3>
+        <p>011-2370 9892 (苏老师)</p>
+      </div>
+      <div class="card">
+        <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
+        <p>可直接咨询</p>
+      </div>
+    </div>
+</section>
+
+<footer>
+  <p>© 2025 倍乐补习中心 Pillars Academy · 勤学乐学</p>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+
+<script>
+  // Image zoom effect
+  const images = document.querySelectorAll('.zoom-img');
+  const overlay = document.getElementById('overlay');
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      if (img.classList.contains('expanded')) {
+        img.classList.remove('expanded');
+        overlay.classList.remove('active');
+      } else {
+        images.forEach(i => i.classList.remove('expanded'));
+        img.classList.add('expanded');
+        overlay.classList.add('active');
+      }
+    });
+  });
+  overlay.addEventListener('click', () => {
+    document.querySelectorAll('.zoom-img.expanded').forEach(img => {
+      img.classList.remove('expanded');
+    });
+    overlay.classList.remove('active');
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
